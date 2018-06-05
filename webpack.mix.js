@@ -12,4 +12,16 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .extract(['bootstrap', 'jquery', 'vue', 'popper.js', 'lodash', 'moment', 'v-animate-css', 'vuex','element-ui'])
+
+    .sass('resources/assets/sass/app.scss', 'public/css').options({
+    processCssUrls: false
+
+});
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+
+mix.browserSync("127.0.0.1:8000");
